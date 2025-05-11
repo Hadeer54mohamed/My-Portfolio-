@@ -19,34 +19,24 @@ export default function Header() {
     };
 
     fetchHeaderData();
+        console.log(headerData);
   }, []);
 
-  return (
-    <header className="bg-white shadow-md p-4 sticky top-0 z-50">
-      <div className="max-w-6xl mx-auto flex justify-between items-center">
+   return (
+    <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 transition-all duration-300">
+      <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-xl font-bold text-blue-600 hover:text-blue-700 transition-colors duration-300"
-        >
-          My Portfolio
+        <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300">
+          {headerData?.logoText || 'My Portfolio'}  {/* Logo text from Sanity */}
         </Link>
 
-        {/* Navigation */}
-        <nav className="space-x-4">
-          {headerData?.menuItems?.length > 0 ? (
-            headerData.menuItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item?.url || '/'} // Use url .current for valid navigation
-                className="transition duration-300 hover:text-blue-600 focus:text-blue-700"
-              >
-                {item?.label} {/* Display the title of the menu item */}
-              </Link>
-            ))
-          ) : (
-            <span className="text-gray-400 text-sm">Loading menu...</span>
-          )}
+        {/* Desktop nav */}
+        <nav className="space-x-6 hidden md:flex">
+          {headerData?.menuItems?.map((item, index) => (
+            <Link key={index} href={item?.url || '/'} className="text-gray-700 hover:text-blue-600 font-medium transition">
+              {item?.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </header>

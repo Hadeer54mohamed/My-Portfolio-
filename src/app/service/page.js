@@ -32,48 +32,48 @@ export default function Service() {
     return (
       <div className="text-center p-6">
         <h2 className="text-xl font-semibold mb-4">No Services Available</h2>
-        <p className="text-gray-600">Sorry, we couldn't find any services at the moment. Please check back later.</p>
+        <p className="text-gray-600">
+          Sorry, we couldn't find any services at the moment. Please check back later.
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="p-6">
-      <h2 className="text-3xl font-bold text-center mb-6">Our Services</h2>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {serviceData.map((service) => (
-          <div
-            key={service._id}
-            className="bg-gradient-to-br from-blue-100 via-pink-100 to-red-100 rounded-xl shadow-md hover:shadow-lg transition duration-300 overflow-hidden"
-          >
-            {service.image?.asset && (
-              <img
-                src={urlFor(service.image)?.url()}
-                alt={service.title}
-                className="w-full h-48 object-cover"
-              />
-            )}
+    <div className="p-6 bg-gray-50">
+      <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">Our Services</h2>
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {serviceData
+          .filter((service) => service.slug && service.slug.current)
+          .map((service) => (
+           <div
+  key={service._id}
+  className="bg-blue-100 text-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex flex-col h-[450px]"
+>
+  {service.image?.asset && (
+    <img
+      src={urlFor(service.image)?.url()}
+      alt={service.title}
+      className="w-full h-56 object-cover rounded-t-xl"
+    />
+  )}
 
-            <div className="p-4">
-              <h4 className="text-xl font-semibold mb-2 text-gray-800">{service.title}</h4>
-              <p className="text-sm mb-4 text-gray-700">{service.description}</p>
+  <div className="p-6 flex flex-col flex-1">
+    <h4 className="text-2xl font-semibold mb-3 text-gray-800">{service.title}</h4>
+    <p className="text-sm text-gray-700 line-clamp-3">{service.description}</p>
 
-              <div className="flex items-center justify-between">
-                {service.slug?.current && (
-                  <Link
-                    href={`/service/${service.slug.current}`}
-                    className="bg-white text-blue-600 font-semibold px-4 py-2 rounded hover:bg-blue-100 transition"
-                  >
-                    View Details
-                  </Link>
-                )}
-                <span className="bg-white text-red-600 font-semibold px-3 py-1 rounded">
-                  ${service.price}
-                </span>
-              </div>
-            </div>
-          </div>
-        ))}
+    <div className="mt-auto flex justify-end">
+      <Link
+        href={`/service/${service.slug.current}`}
+        className="text-white bg-blue-600 px-4 py-2 rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
+      >
+        View Details
+      </Link>
+    </div>
+  </div>
+</div>
+
+          ))}
       </div>
     </div>
   );

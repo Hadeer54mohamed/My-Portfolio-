@@ -25,29 +25,29 @@ export default function Contact() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 bg-gray-50">
       {contactData.map((contact, index) => (
-        <div key={index} className="bg-gradient-to-br from-blue-400 via-indigo-400 to-pink-400 text-white rounded-xl overflow-hidden shadow-lg">
+        <div key={index} className="bg-blue-100 text-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
           <div className="p-6">
-            <h2 className="text-3xl font-semibold text-center mb-6">Contact Information #{index + 1}</h2>
+            <h2 className="text-3xl font-semibold text-center mb-6 text-gray-700">Contact Information #{index + 1}</h2>
 
-            <div className="space-y-4 text-gray-100">
+            <div className="space-y-4 text-gray-600">
               <p className="flex items-center">
-                <strong className="mr-2">📧 Email:</strong>
-                <a href={`mailto:${contact.email}`} className="text-white hover:text-blue-300 transition">{contact.email}</a>
+                <strong className="mr-2 text-gray-800">📧 Email:</strong>
+                <a href={`mailto:${contact.email}`} className="text-blue-600 hover:text-blue-400 transition">{contact.email}</a>
               </p>
               <p className="flex items-center">
-                <strong className="mr-2">🔗 LinkedIn:</strong>
-                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition">{contact.linkedin}</a>
+                <strong className="mr-2 text-gray-800">🔗 LinkedIn:</strong>
+                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-400 transition">{contact.linkedin}</a>
               </p>
               <p className="flex items-center">
-                <strong className="mr-2">💻 GitHub:</strong>
-                <a href={contact.github} target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-300 transition">{contact.github}</a>
+                <strong className="mr-2 text-gray-800">💻 GitHub:</strong>
+                <a href={contact.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-400 transition">{contact.github}</a>
               </p>
             </div>
 
             <div className="text-center mt-6">
-              <p className="text-gray-200">Feel free to reach out via any of the platforms above. We are happy to connect!</p>
+              <p className="text-gray-600">Feel free to reach out via any of the platforms above. We are happy to connect!</p>
             </div>
           </div>
         </div>
