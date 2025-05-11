@@ -38,10 +38,10 @@ export default function Header() {
             headerData.menuItems.map((item, index) => (
               <Link
                 key={index}
-                href={item?.slug?.current || '/'} // Use slug.current for valid navigation
+                href={item?.url || '/'} // Use url .current for valid navigation
                 className="transition duration-300 hover:text-blue-600 focus:text-blue-700"
               >
-                {item?.title} {/* Display the title of the menu item */}
+                {item?.label} {/* Display the title of the menu item */}
               </Link>
             ))
           ) : (
