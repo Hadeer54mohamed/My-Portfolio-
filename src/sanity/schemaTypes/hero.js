@@ -1,6 +1,6 @@
 export default {
   name: 'hero',
-  title: 'Hero Section',
+  title: 'Hero',
   type: 'document',
   fields: [
     {
@@ -35,5 +35,11 @@ export default {
         hotspot: true,
       },
     },
+   /*  {
+      name: 'isHidden',
+      title: 'Hide Section',
+      type: 'boolean',
+      description: 'Check to hide this section from the website',
+    }, */
   ],
 };

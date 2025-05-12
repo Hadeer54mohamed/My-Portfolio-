@@ -1,6 +1,6 @@
 export default {
-  name: 'service',
-  title: 'Service',
+  name: 'blog',
+  title: 'Blog',
   type: 'document',
   fields: [
     {
@@ -31,9 +31,22 @@ export default {
       }
     },
     {
-      name: 'price',
-      title: 'Price',
-      type: 'number',
+  name: 'cta',
+  title: 'Call To Action',
+  type: 'object',
+  fields: [
+    {
+      name: 'text',
+      title: 'CTA Text',
+      type: 'string',
+    },
+    {
+      name: 'url',
+      title: 'CTA URL',
+      type: 'url',
     }
+  ]
+}
+
   ]
 }

@@ -20,16 +20,16 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-gray-100 text-center py-6 mt-10">
+<footer className="bg-blue-50 backdrop-blur-sm text-center py-6 mt-10 border-t border-gray-200">
       {/* Footer content */}
       <div className="max-w-6xl mx-auto px-4">
         {/* Custom footer text or copyright */}
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-600 mb-4">
           {footerData?.footerText || `&copy; ${new Date().getFullYear()} ElBoghdady Portfolio. All rights reserved.`}
         </p>
         
         {/* Social media links */}
-        <div className="flex justify-center space-x-6">
+        <div className="flex justify-center space-x-5">
           {footerData?.socialLinks?.map((link, index) => (
             <a key={index} href={link.url} className="text-gray-500 hover:text-blue-600 transition duration-300">
               <img src={link.iconUrl} alt={link.platform} className="w-6 h-6" />

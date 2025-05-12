@@ -25,11 +25,14 @@ export default function Hero() {
 
     fetchHeroData();
   }, []);
-
+/* if (!heroData?.isHidden) {
+  return <HeroSection data={heroData} />;
+}
+ */
   // شاشة التحميل
   if (!heroData) {
     return (
-      <section className="relative h-[70vh] flex items-center justify-center bg-gray-100">
+      <section className=" relative h-[70vh] flex items-center justify-center bg-gray-100">
         <div className="text-center animate-pulse">
           <svg className="animate-spin h-8 w-8 text-gray-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -41,7 +44,7 @@ export default function Hero() {
   }
 
   return (
-   <section className="relative min-h-[70vh] bg-gradient-to-br from-gray-100 via-white to-gray-200 flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 gap-8">
+  <section className="relative min-h-[70vh] bg-gradient-to-br from-white via-blue-50 to-green-50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-20 py-12 gap-8 shadow-sm">
   <div className="max-w-xl text-center md:text-left space-y-6">
     <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800">{heroData.title}</h1>
     <p className="text-lg text-gray-600">{heroData.subtitle}</p>
@@ -59,10 +62,12 @@ export default function Hero() {
     <img
       src={urlFor(heroData.backgroundImage).url()}
       alt="Hero"
-      className="w-full max-w-md rounded-xl shadow-lg"
+      className="w-full max-w-md rounded-2xl shadow-lg"
     />
   )}
 </section>
+
+
 
   );
 }
