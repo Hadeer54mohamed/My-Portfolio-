@@ -19,7 +19,6 @@ export default function Footer() {
     fetchFooterData();
   }, []);
 
-  // ✅ شرط الإخفاء
   if (footerData?.isHidden) {
     return null;
   }
