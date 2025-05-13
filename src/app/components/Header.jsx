@@ -1,6 +1,6 @@
 'use client';
 
-import { client } from '@/sanity/lib/client'; // Make sure this points to your configured Sanity client
+import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -18,25 +18,27 @@ export default function Header() {
       }
     };
 
-
-
     fetchHeaderData();
-    console.log(headerData);
   }, []);
-  if (headerData?.isHidden) {
+
+  useEffect(() => {
+    if (headerData) {
+      console.log('Header data updated:', headerData);
+    }
+  }, [headerData]);
+
+  if (!headerData || headerData.isHidden) {
     return null;
   }
+
   return (
     <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
-        {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300">
-          {headerData?.logoText || 'My Portfolio'}  {/* Logo text from Sanity */}
+          {headerData.logoText || 'My Portfolio'}
         </Link>
-
-        {/* Desktop nav */}
         <nav className="space-x-6 hidden md:flex">
-          {headerData?.menuItems?.map((item, index) => (
+          {headerData.menuItems?.map((item, index) => (
             <Link key={index} href={item?.url || '/'} className="text-gray-700 hover:text-blue-600 font-medium transition">
               {item?.label}
             </Link>

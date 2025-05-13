@@ -18,6 +18,14 @@ export default function About() {
     fetchData();
   }, []);
 
+  const visibleAbouts = aboutData.filter(item => !item.isHidden);
+
+  useEffect(() => {
+    if (!loading) {
+      console.log('About data:', visibleAbouts);
+    }
+  }, [visibleAbouts, loading]);
+
   if (loading) {
     return (
       <div className="space-y-4 animate-pulse p-6">
@@ -27,32 +35,30 @@ export default function About() {
       </div>
     );
   }
-  if (aboutData?.isHidden) {
-    return null;}
 
-  if (aboutData.length === 0) {
+  if (visibleAbouts.length === 0) {
     return (
       <div className="text-center p-6">
         <h2 className="text-xl font-semibold mb-4">No About Information Available</h2>
         <p className="text-gray-600">
-          Sorry, we couldn't find any about information at the moment.
+          Sorry, we couldn't find any visible about information at the moment.
         </p>
       </div>
     );
   }
 
   return (
-<div className="mt-20 p-6 min-h-screen rounded-3xl bg-gradient-to-tl from-blue-50 via-green-50 to-gray-50 backdrop-blur-sm bg-opacity-80">
+    <div className="mt-20 p-6 min-h-screen rounded-3xl bg-gradient-to-tl from-blue-50 via-green-50 to-gray-50 backdrop-blur-sm bg-opacity-80">
       <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">About Us</h2>
 
       <div
         className={
-          aboutData.length === 1
+          visibleAbouts.length === 1
             ? 'flex justify-center'
             : 'grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'
         }
       >
-        {aboutData.map((about, index) => (
+        {visibleAbouts.map((about, index) => (
           <div
             key={index}
             className="bg-white/60 backdrop-blur-md shadow-md hover:shadow-lg rounded-[2rem] p-8 flex flex-col items-center transition-transform transform hover:scale-105"
@@ -66,12 +72,10 @@ export default function About() {
                 />
               </div>
             )}
-
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">{about.name}</h3>
             <p className="text-md leading-relaxed text-gray-700 mb-4 text-center">
               {about.bio}
             </p>
-
             <p className="text-sm text-gray-600 text-center italic">
               We believe in delivering quality work to our clients.
             </p>
