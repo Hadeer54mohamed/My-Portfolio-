@@ -27,7 +27,9 @@ export default function Service() {
       </div>
     );
   }
-
+  if (serviceData?.isHidden) {
+    return null;}
+    
   if (serviceData.length === 0) {
     return (
       <div className="text-center p-6">

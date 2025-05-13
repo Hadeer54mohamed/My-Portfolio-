@@ -18,11 +18,15 @@ export default function Header() {
       }
     };
 
-    fetchHeaderData();
-        console.log(headerData);
-  }, []);
 
-   return (
+
+    fetchHeaderData();
+    console.log(headerData);
+  }, []);
+  if (headerData?.isHidden) {
+    return null;
+  }
+  return (
     <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
         {/* Logo */}

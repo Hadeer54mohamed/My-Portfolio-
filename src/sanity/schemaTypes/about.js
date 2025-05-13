@@ -22,6 +22,12 @@ export default {
         hotspot:true
       }
     },
+    {
+      name: 'isHidden',
+      title: 'Hide Section',
+      type: 'boolean',
+      description: 'Check to hide this section from the website',
+    }, 
    
   ]
 }

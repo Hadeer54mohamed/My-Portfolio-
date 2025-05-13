@@ -27,6 +27,8 @@ export default function About() {
       </div>
     );
   }
+  if (aboutData?.isHidden) {
+    return null;}
 
   if (aboutData.length === 0) {
     return (

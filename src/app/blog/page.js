@@ -27,7 +27,8 @@ export default function Blog() {
       </div>
     );
   }
-
+  if (blogData?.isHidden) { return null; }
+  
   if (blogData.length === 0) {
     return (
       <div className="text-center p-6">

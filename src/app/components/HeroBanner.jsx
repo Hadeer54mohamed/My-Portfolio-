@@ -25,10 +25,12 @@ export default function Hero() {
 
     fetchHeroData();
   }, []);
-/* if (!heroData?.isHidden) {
-  return <HeroSection data={heroData} />;
+
+ if (heroData?.isHidden) {
+  return null; 
 }
- */
+
+ 
   // شاشة التحميل
   if (!heroData) {
     return (

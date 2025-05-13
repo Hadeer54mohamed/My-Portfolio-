@@ -37,6 +37,9 @@ export default function Contact() {
       </div>
     );
   }
+  if (contactData?.isHidden) {
+    return null;
+  }
 
   return (
    
