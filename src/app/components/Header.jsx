@@ -37,7 +37,7 @@ export default function Header() {
         <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300">
           {headerData.logoText || 'My Portfolio'}
         </Link>
-        <nav className="space-x-6 hidden md:flex">
+        <nav className="space-x-6  flex">
           {headerData.menuItems?.map((item, index) => (
             <Link key={index} href={item?.url || '/'} className="text-gray-700 hover:text-blue-600 font-medium transition">
               {item?.label}
