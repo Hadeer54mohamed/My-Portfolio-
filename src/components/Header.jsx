@@ -3,8 +3,11 @@
 import { client } from '@/sanity/lib/client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLocale } from 'next-intl';
 
 export default function Header() {
+  const locale = useLocale();
   const [headerData, setHeaderData] = useState(null);
 
   useEffect(() => {
@@ -21,12 +24,6 @@ export default function Header() {
     fetchHeaderData();
   }, []);
 
-  useEffect(() => {
-    if (headerData) {
-      console.log('Header data updated:', headerData);
-    }
-  }, [headerData]);
-
   if (!headerData || headerData.isHidden) {
     return null;
   }
@@ -35,15 +32,16 @@ export default function Header() {
     <header className="bg-white/80 backdrop-blur-md shadow-sm fixed top-0 w-full z-50 transition-all duration-300">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
         <Link href="/" className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition-colors duration-300">
-          {headerData.logoText || 'My Portfolio'}
+          {headerData.logoText?.[locale] || headerData.logoText?.en || 'My Portfolio'}
         </Link>
-        <nav className="space-x-6  flex">
+        <nav className="space-x-6 flex">
           {headerData.menuItems?.map((item, index) => (
             <Link key={index} href={item?.url || '/'} className="text-gray-700 hover:text-blue-600 font-medium transition">
-              {item?.label}
+              {item.label?.[locale] || item.label?.en || 'Menu Item'}
             </Link>
           ))}
         </nav>
+        <LanguageSwitcher />
       </div>
     </header>
   );

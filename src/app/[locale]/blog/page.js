@@ -4,8 +4,10 @@ import { client } from '@/sanity/lib/client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { urlFor } from '@/sanity/lib/image';
+import { useTranslations } from 'next-intl';
 
 export default function Blog() {
+const t = useTranslations('Blog');
   const [blogData, setBlogData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,17 +38,17 @@ export default function Blog() {
   if (visibleBlogs.length === 0) {
     return (
       <div className="text-center p-6">
-        <h2 className="text-xl font-semibold mb-4">No Blogs Available</h2>
+        <h2 className="text-xl font-semibold mb-4">{/* No Blogs Available */} {t('noBlogsTitle')}</h2>
         <p className="text-gray-600">
-          Sorry, we couldn't find any blogs at the moment. Please check back later.
-        </p>
+        {/*   Sorry, we couldn't find any blogs at the moment. Please check back later. */}
+        {t('noBlogsMessage')} </p>
       </div>
     );
   }
 
   return (
     <div className="mt-20 p-6 min-h-screen bg-gradient-to-br from-white via-green-50 to-blue-100 rounded-3xl">
-      <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">Our Blogs</h2>
+      <h2 className="text-4xl font-bold text-center mb-10 text-gray-900">{/* Our Blogs */} {t('title')} </h2>
 
       <div
         className={`grid gap-8 ${
@@ -77,7 +79,7 @@ export default function Blog() {
                   href={`/blog/${blog.slug.current}`}
                   className="inline-block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700 transition duration-300"
                 >
-                  Read More
+                {/*   Read More */}  {t('readMore')}
                 </Link>
               </div>
             </div>

@@ -3,8 +3,10 @@
 import { client } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function About() {
+const t = useTranslations('About');
   const [aboutData, setAboutData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -39,17 +41,17 @@ export default function About() {
   if (visibleAbouts.length === 0) {
     return (
       <div className="text-center p-6">
-        <h2 className="text-xl font-semibold mb-4">No About Information Available</h2>
+        <h2 className="text-xl font-semibold mb-4">{/* No About Information Available */}  {t('noDataTitle')}</h2>
         <p className="text-gray-600">
-          Sorry, we couldn't find any visible about information at the moment.
-        </p>
+          {/* Sorry, we couldn't find any visible about information at the moment. */}
+          {t('noDataMessage')} </p>
       </div>
     );
   }
 
   return (
     <div className="mt-20 p-6 min-h-screen rounded-3xl bg-gradient-to-tl from-blue-50 via-green-50 to-gray-50 backdrop-blur-sm bg-opacity-80">
-      <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">About Us</h2>
+      <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">{/* About Us */}  {t('title')}</h2>
 
       <div
         className={
@@ -77,8 +79,8 @@ export default function About() {
               {about.bio}
             </p>
             <p className="text-sm text-gray-600 text-center italic">
-              We believe in delivering quality work to our clients.
-            </p>
+{/*               We believe in delivering quality work to our clients.
+ */}     {t('qualityMessage')}         </p>
           </div>
         ))}
       </div>

@@ -1,0 +1,33 @@
+{
+  "About": {
+    "title": "About Us",
+    "noDataTitle": "No About Information Available",
+    "noDataMessage": "Sorry, we couldn't find any visible about information at the moment.",
+    "qualityMessage": "We believe in delivering quality work to our clients."
+  },
+  "Blog": {
+    "title": "Our Blogs",
+    "noBlogsTitle": "No Blogs Available",
+    "noBlogsMessage": "Sorry, we couldn't find any blogs at the moment. Please check back later.",
+    "readMore": "Read More"
+  },
+"Contact":{
+  "title": "Contact Us",
+  "noDataTitle": "No Contact Information Available",
+  "noDataMessage": "Sorry, we couldn't find any contact information at the moment.",
+  "contactInfo": "Contact Info",
+  "collaborationMessage": "We’re always open to collaboration. Feel free to reach out!",
+  "email": "Email",
+  "linkedin": "LinkedIn",
+  "github": "GitHub"
+}, 
+"Service":{
+  "title": "Our Services",
+  "noServicesTitle": "No Services Available",
+  "noServicesMessage": "Sorry, we couldn't find any services at the moment. Please check back later.",
+  "viewDetails": "View Details"
+}
+
+  
+
+}

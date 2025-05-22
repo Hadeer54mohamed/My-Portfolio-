@@ -4,8 +4,10 @@ import { client } from '@/sanity/lib/client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { urlFor } from '@/sanity/lib/image';
+import { useTranslations } from 'next-intl';
 
 export default function Service() {
+    const t = useTranslations('Service');
   const [serviceData, setServiceData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -36,17 +38,17 @@ export default function Service() {
   if (visibleServices.length === 0) {
     return (
       <div className="text-center p-6">
-        <h2 className="text-xl font-semibold mb-4">No Services Available</h2>
+        <h2 className="text-xl font-semibold mb-4">{/* No Services Available */} {t('noServicesTitle')}</h2>
         <p className="text-gray-600">
-          Sorry, we couldn't find any services at the moment. Please check back later.
-        </p>
+          {/* Sorry, we couldn't find any services at the moment. Please check back later. */}
+       {t('noServicesMessage')} </p>
       </div>
     );
   }
 
   return (
     <div className="p-6 min-h-screen bg-gradient-to-bl from-white via-green-50 to-blue-100 rounded-3xl mt-20">
-      <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">Our Services</h2>
+      <h2 className="text-4xl font-bold text-center mb-10 text-gray-800">{/* Our Services */} {t('title')}</h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {visibleServices.map(service => (
           <div
@@ -70,7 +72,7 @@ export default function Service() {
                   href={`/service/${service.slug.current}`}
                   className="text-white bg-blue-600 px-4 py-2 rounded-full shadow hover:bg-blue-700 transition duration-300"
                 >
-                  View Details
+               {/*    View Details */} {t('viewDetails')}
                 </Link>
               </div>
             </div>
